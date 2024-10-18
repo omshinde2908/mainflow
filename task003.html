@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <script lang="java script">
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('registrationForm');
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        const usernameError = document.getElementById('usernameError');
+        const emailError = document.getElementById('emailError');
+    
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+    
+            // Validate username (minimum 3 characters)
+            if (usernameInput.value.length < 3) {
+                usernameError.textContent = 'Username must be at least 3 characters.';
+                return;
+            }
+            usernameError.textContent = ''; // Clear error message
+    
+            // Validate email (simple check for '@' symbol)
+            if (!emailInput.value.includes('@')) {
+                emailError.textContent = 'Invalid email address.';
+                return;
+            }
+            emailError.textContent = ''; // Clear error message
+    
+            // Form is valid; you can submit it to the server or perform other actions
+            console.log('Form submitted successfully!');
+        });
+    });
+</script>
+    
+</head>
+<body>
+    <h1>User Registration</h1>
+    <form id="registrationForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <span id="usernameError" style="color: red;"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <span id="emailError" style="color: red;"></span>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script src="registration.js"></script>
+</body>
+</html>
